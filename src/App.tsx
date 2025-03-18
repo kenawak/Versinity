@@ -13,7 +13,7 @@ import { useSearchParams } from "react-router-dom"
 import { DebugPanel } from "@/components/debug-panel"
 
 export default function App() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [verses, setVerses] = useState<Verse[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -24,7 +24,7 @@ export default function App() {
   const [textSize, setTextSize] = useState("medium") // small, medium, large
   const [fontFamily, setFontFamily] = useState(searchParams.get("font") || "Merriweather")
   const [showFontSettings, setShowFontSettings] = useState(false)
-  const [showReference, setShowReference] = useState(true)
+  const [showReference] = useState(true)
 
   // Navigation lock to prevent multiple navigations at once
   const [isNavigating, setIsNavigating] = useState(false)
@@ -322,16 +322,16 @@ export default function App() {
     }
   }
 
-  const getCommentaryTextSizeClass = () => {
-    switch (textSize) {
-      case "small":
-        return "text-base md:text-lg"
-      case "large":
-        return "text-xl md:text-2xl"
-      default:
-        return "text-lg md:text-xl"
-    }
-  }
+  // const getCommentaryTextSizeClass = () => {
+  //   switch (textSize) {
+  //     case "small":
+  //       return "text-base md:text-lg"
+  //     case "large":
+  //       return "text-xl md:text-2xl"
+  //     default:
+  //       return "text-lg md:text-xl"
+  //   }
+  // }
 
   const toggleFontSettings = () => {
     setShowFontSettings(!showFontSettings)
